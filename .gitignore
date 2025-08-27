@@ -1,0 +1,28 @@
+# Node artifacts
+node_modules/
+dist/
+.next/
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+.env
+
+# Terraform artifacts
+*.tfstate
+*.tfstate.*
+.terraform/
+terraform.tfvars
+plan.out
+
+# SBOMs and archives
+*.tar
+*.gz
+*.zip
+sbom.json
+
+# Logs and misc
+*.log
+

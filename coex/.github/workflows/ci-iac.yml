@@ -1,0 +1,15 @@
+name: ci-iac
+on: [push, pull_request]
+jobs:
+  tf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform -chdir=iac/terraform/envs/${{ inputs.env || 'azure-il4' }} init
+      - run: terraform -chdir=iac/terraform/envs/${{ inputs.env || 'azure-il4' }} validate
+      - run: terraform -chdir=iac/terraform/envs/${{ inputs.env || 'azure-il4' }} plan -out=plan.out
+      - uses: bridgecrewio/checkov-action@v12
+        with:
+          directory: iac/terraform
+      - run: conftest test iac/terraform
