@@ -1,0 +1,3 @@
+# CoEX
+
+Monorepo scaffold.

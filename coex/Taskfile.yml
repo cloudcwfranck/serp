@@ -1,0 +1,17 @@
+version: '3'
+tasks:
+  dev:
+    cmds:
+      - echo 'starting dev stack'
+  test:
+    cmds:
+      - pytest
+  iac-plan:
+    cmds:
+      - terraform -chdir=iac/terraform/envs/{{.ENV}} plan
+  iac-apply:
+    cmds:
+      - terraform -chdir=iac/terraform/envs/{{.ENV}} apply
+  release:
+    cmds:
+      - echo 'release'
